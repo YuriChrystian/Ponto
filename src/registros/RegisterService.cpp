@@ -13,12 +13,13 @@
 
 RegisterService::RegisterService(Employee e) : e(e) {}
 
-std::stack<std::string> RegisterService::getAll() {
+Lista* RegisterService::getAll() {
     std::ifstream file(e.getRegistro(), std::ios::in);
     std::stack<std::string> lines;
+    auto* l = new Lista();
 
     if (!file.is_open()) {
-        return {};
+        return nullptr;
     }
 
     std::string line;
@@ -27,18 +28,21 @@ std::stack<std::string> RegisterService::getAll() {
 
     while (std::getline(file, line)) {
         qLinha++;
+        EmployeeItem litem;
+        litem.date =  support.getDateFormat(line);
         if (line.front() == '1') {
-            lines.push("Check-In em " + support.getDateFormat(line));
+            litem.type = 1;
         } else {
-            lines.push("Check-Out em " + support.getDateFormat(line));
+            litem.type = 2;
         }
+        l->inserirInicio(litem);
     }
 
     if (qLinha == 0) {
-        return {};
+        return nullptr;
     }
 
-    return lines;
+    return l;
 }
 
 Dashboard* RegisterService::getDashboard() {

@@ -153,14 +153,17 @@ int main() {
                 break;
             }
             case 3:
-                std::stack<std::string> lines = registerService.getAll();
-                if (lines.empty()) {
-                    std::cout << "Nenhum registro para esse funcionario" << std::endl;
-                    resetCout();
-                } else {
-                    printTable(lines);
-                    resetCout();
-                }
+                auto* list = registerService.getAll();
+                list->exibirLista();
+                resetCout();
+
+                // if (lines.empty()) {
+                //     std::cout << "Nenhum registro para esse funcionario" << std::endl;
+                //     resetCout();
+                // } else {
+                //     printTable(lines);
+                //     resetCout();
+                // }
                 break;
         }
     }
