@@ -17,7 +17,6 @@ void EmployeeService::check() const {
 bool EmployeeService::isCheckOut() const {
 
     std::ifstream file(e.getRegistro(), std::ios::in);
-    std::cout << e.getRegistro() << std::endl;
 
     if (!file.is_open()) {
         return true;
@@ -35,7 +34,6 @@ bool EmployeeService::isCheckOut() const {
 
 void EmployeeService::checkIn() const {
     Support support;
-    support.createLogsDirectory();
 
     std::ofstream file(e.getRegistro(), std::ios::app);
 
@@ -51,7 +49,6 @@ void EmployeeService::checkIn() const {
 
 void EmployeeService::checkOut() const {
     Support support;
-    support.createLogsDirectory();
 
     std::ofstream file(e.getRegistro(), std::ios::app);
 

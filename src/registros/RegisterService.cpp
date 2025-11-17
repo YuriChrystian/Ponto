@@ -51,7 +51,6 @@ Dashboard* RegisterService::getDashboard() {
     std::ifstream file(e.getRegistro(), std::ios::in);
 
     if (!file.is_open()) {
-        std::cout << "Erro ao abrir o arquivo!" << std::endl;
         return nullptr;
     }
 

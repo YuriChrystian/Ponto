@@ -10,7 +10,6 @@
 class Support {
     public:
         std::string getDate();
-        void createLogsDirectory();
         std::string getLogsPath();
         std::string getDateFormat(std::string date);
 };

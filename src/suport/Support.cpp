@@ -57,10 +57,3 @@ std::string Support::getLogsPath() {
     
     return logsPath.string();
 }
-
-void Support::createLogsDirectory() {
-    std::filesystem::path logsDir = this->getLogsPath();
-    if (!std::filesystem::exists(logsDir)) {
-        std::filesystem::create_directories(logsDir);
-    }
-}
